@@ -8,14 +8,14 @@ def parity_index(bits):
     return parity_location
 
 
-def parity(bits, interator):
-    result = 0
+def parity_range(bits, interator):
+    result = []
     next_bit = interator - 1
     cicle = interator
 
     for index, bit in enumerate(bits):
         if index == next_bit:
-            result += bit
+            result.append(index)
             cicle -= 1
 
             if cicle == 0:
@@ -23,27 +23,44 @@ def parity(bits, interator):
                 cicle = interator
             else:
                 next_bit += 1
+    return result
+
+
+def parity(bits, interator):
+    result = 0
+    for index in parity_range(bits, interator):
+        result += bits[index]
     return 0 if result % 2 == 0 else 1
 
 
-def hamming_code(bits):
+def insert_parity(bits):
     for bit_index in parity_index(bits):
         bits.insert(bit_index, 0)
+    return bits
 
+
+def reset_parity(bits):
+    for bit_index in parity_index(bits):
+        bits[bit_index] = 0
+    return bits
+
+
+def calculate_parity(bits):
     for bit_index in parity_index(bits):
         bits[bit_index] = parity(bits, bit_index + 1)
     return bits
 
 
 def integrity_check(bits):
-    check_bits = bits.copy()
-
-    for bit_index in parity_index(check_bits):
-        check_bits[bit_index] = 0
-
-    for bit_index in parity_index(check_bits):
-        check_bits[bit_index] = parity(check_bits, bit_index + 1)
+    check_bits = reset_parity(bits)
+    check_bits = calculate_parity(check_bits)
     return check_bits == bits
+
+
+def hamming_code(bits):
+    bits = insert_parity(bits)
+    bits = calculate_parity(bits)
+    return bits
 
 
 def hamming_decode(bits):
