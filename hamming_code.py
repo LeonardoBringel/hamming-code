@@ -1,10 +1,25 @@
 from parity import *
 
 
-def integrity_check(bits):
-    check_bits = reset_parity(bits)
+def find_error(bits):
+    error_index = []
+
+    check_bits = reset_parity(bits.copy())
     check_bits = calculate_parity(check_bits)
-    return check_bits == bits
+
+    for index in range(len(bits)):
+        if bits[index] != check_bits[index]:
+            error_index.append(index)
+    return error_index
+
+
+def correct_error(bits, error_index):
+    error_position = 0
+
+    for index in error_index:
+        error_position += index + 1
+    bits[error_position - 1] = 0 if bits[error_position - 1] == 1 else 1
+    return bits
 
 
 def hamming_code(bits):
@@ -14,12 +29,10 @@ def hamming_code(bits):
 
 
 def hamming_decode(bits):
-    result = []
+    error_index = find_error(bits)
 
-    if integrity_check(bits):
-        for index, bit in enumerate(bits):
-            if index not in parity_index(bits):
-                result.append(bit)
-    else:
-        return [0]
-    return result
+    if len(error_index) != 0:
+        bits = correct_error(bits, error_index)
+
+    bits = remove_parity(bits)
+    return bits

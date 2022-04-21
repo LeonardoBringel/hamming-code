@@ -39,6 +39,14 @@ def insert_parity(bits):
     return bits
 
 
+def remove_parity(bits):
+    result = []
+    for index, bit in enumerate(bits):
+        if index not in parity_index(bits):
+            result.append(bit)
+    return result
+
+
 def reset_parity(bits):
     for bit_index in parity_index(bits):
         bits[bit_index] = 0
