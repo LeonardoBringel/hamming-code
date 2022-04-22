@@ -49,12 +49,6 @@ def remove_parity(bits):
     return result
 
 
-def reset_parity(bits):
-    for bit_index in parity_index(bits):
-        bits[bit_index] = 0
-    return bits
-
-
 def calculate_parity(bits):
     for bit_index in parity_index(bits):
         bits[bit_index] = parity(bits, bit_index + 1)
