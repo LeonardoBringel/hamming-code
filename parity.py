@@ -10,12 +10,14 @@ def parity_index(bits):
 
 def parity_range(bits, interator):
     result = []
-    next_bit = interator
-    cicle = interator - 1
+    next_bit = interator - 1
+    cicle = interator
 
     for index, bit in enumerate(bits):
         if index == next_bit:
-            result.append(index)
+
+            if index not in parity_index(bits):
+                result.append(index)
             cicle -= 1
 
             if cicle == 0:
