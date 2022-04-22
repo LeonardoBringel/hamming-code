@@ -3,9 +3,7 @@ from parity import *
 
 def find_error(bits):
     error_index = []
-
-    check_bits = reset_parity(bits.copy())
-    check_bits = calculate_parity(check_bits)
+    check_bits = calculate_parity(bits.copy())
 
     for index in range(len(bits)):
         if bits[index] != check_bits[index]:
