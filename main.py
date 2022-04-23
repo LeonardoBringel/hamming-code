@@ -1,4 +1,4 @@
-from hamming_code import *
+from hamming import *
 
 print('  _   _                                            ____          _      ')
 print(' | | | | __ _ _ __ ___  _ __ ___ (_)_ __   __ _   / ___|___   __| | ___ ')

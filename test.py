@@ -1,4 +1,4 @@
-from hamming_code import *
+from hamming import *
 
 
 def _test_hamming_code(bits, expected):
