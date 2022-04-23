@@ -21,12 +21,15 @@ def correct_error(bits, error_index):
 
 
 def hamming_code(bits):
+    bits = bits.copy()
+
     bits = insert_parity(bits)
     bits = calculate_parity(bits)
     return bits
 
 
 def hamming_decode(bits):
+    bits = bits.copy()
     error_index = find_error(bits)
 
     if len(error_index) != 0:

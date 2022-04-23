@@ -4,11 +4,11 @@ from hamming_code import *
 def _test_hamming_code(bits, expected):
     print(f'\n\tTest Hamming Code - {bits}')
 
-    hamming_code(bits)
-    if bits == expected:
-        print(f'\t{bits}\t✔')
+    result = hamming_code(bits)
+    if result == expected:
+        print(f'\t{result}\t✔')
     else:
-        print(f'\t{bits}')
+        print(f'\t{result}')
 
 
 def _test_hamming_decode(bits, expected):
