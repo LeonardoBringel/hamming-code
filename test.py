@@ -29,23 +29,16 @@ def _test_hamming_decode(bits, expected):
     print(f'\t{counter}/{len(bits)} expected results')
 
 
-hamming_code_test_dict = {
+hamming_test_dict = {
     '0101': '0100101',
     '0100': '1001100',
     '0011': '1000011',
     '11001111': '011010001111'
 }
 
-hamming_decode_test_dict = {
-    '0100101': '0101',
-    '1001100': '0100',
-    '1000011': '0011',
-    '011010001111': '11001111'
-}
-
 
 print('\n\t-- Hamming Code --')
-for data, expected_result in hamming_code_test_dict.items():
+for data, expected_result in hamming_test_dict.items():
     data = [int(bit) for bit in data]
     expected_result = [int(bit) for bit in expected_result]
 
@@ -53,7 +46,7 @@ for data, expected_result in hamming_code_test_dict.items():
 
 
 print('\n\n\t-- Hamming Decode --')
-for data, expected_result in hamming_decode_test_dict.items():
+for expected_result, data in hamming_test_dict.items():
     data = [int(bit) for bit in data]
     expected_result = [int(bit) for bit in expected_result]
 
