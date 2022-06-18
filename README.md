@@ -38,11 +38,11 @@ Note: The parity itself assumes value 0 when being calculated.
 
 
 ### Decode
-The way that the reciever will decode the word is very similar to the way of the sender's encoding.
+The way that the receiver will decode the word is very similar to the way of the sender's encoding.
 
-The first thing to do is to locate the parity bits and recalculate them, comparing the result with the recieved word.
+The first thing to do is to locate the parity bits and recalculate them, comparing the result with the received word.
 
-    (e.g.) recieved word: "0 1 1 0 1 1 1"
+    (e.g.) received word: "0 1 1 0 1 1 1"
     
     recalculating parity
     parity 1 (bit 1) = 3 (odd) = 1
@@ -52,15 +52,15 @@ The first thing to do is to locate the parity bits and recalculate them, compari
 If any difference is found, it means that our data has been corrupted.
 To locate the corrupted bit, simply sum the position of the parity bits that are different from the received and the result will be the position of the corrupted bit.
     
-    (e.g.) recieved word: "0 1 1 0 1 1 1", calculated word: "1 1 1 1 1 1 1"
+    (e.g.) received word: "0 1 1 0 1 1 1", calculated word: "1 1 1 1 1 1 1"
     
     location = 1 + 4 = 5
     
-    inverting bit 5 in the recieved word: "0 1 1 0 0 1 1"
+    inverting bit 5 in the received word: "0 1 1 0 0 1 1"
 
 
 After correcting the bit, we can recalculate to ensure that the data is no longer corrupted and then remove the parity bits.
 
-    (e.g.) recieved word: "0 1 1 0 1 1 1"
+    (e.g.) received word: "0 1 1 0 1 1 1"
     
     original word: "1 0 1 1"
