@@ -19,7 +19,7 @@ Those bits are placed at certain positions that cover an array of the data bits.
 
 
 ### Encode
-The Parity Bit is determined by the sum of the checked bits. The Parity Bit is 0 if the result of the sum is an even number, and is 1 otherwise.
+The Parity Bit is determined by the sum of the checked bits. The Parity Bit is 0 if the sum result is an even number, otherwise it is 1.
 
 The position of the Parity Bit determines the sequence of bits that it alternatively checks and skips.
 
