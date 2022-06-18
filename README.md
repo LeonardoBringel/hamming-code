@@ -64,3 +64,10 @@ After correcting the bit, we can recalculate to ensure that the data is no longe
     (e.g.) received word: "0 1 1 0 1 1 1"
     
     original word: "1 0 1 1"
+
+
+## :sparkles: Main Features
+
+* Calculate Hamming Code
+* Single-bit error correction
+* Decode Hamming Code
