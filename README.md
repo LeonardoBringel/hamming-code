@@ -61,7 +61,7 @@ To locate the corrupted bit, simply sum the position of the parity bits that are
 
 After correcting the bit, we can recalculate to ensure that the data is no longer corrupted and then remove the parity bits.
 
-    (e.g.) received word: "0 1 1 0 1 1 1"
+    (e.g.) received word: "0 1 1 0 0 1 1"
     
     original word: "1 0 1 1"
 
