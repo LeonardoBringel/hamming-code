@@ -1,4 +1,5 @@
 from hamming import *
+from tkinter import *
 
 print('  _   _                                            ____          _      ')
 print(' | | | | __ _ _ __ ___  _ __ ___ (_)_ __   __ _   / ___|___   __| | ___ ')
