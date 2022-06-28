@@ -28,6 +28,15 @@ def validate_input(value):
     return True if value == '1' or value == '0' or value == '' else False
 
 
+def button_state_controller(*_):
+    if len(input_text.get()) > 0:
+        button_encode.config(state='normal')
+        button_decode.config(state='normal')
+    else:
+        button_encode.config(state='disabled')
+        button_decode.config(state='disabled')
+
+
 window = Tk()
 window.title('Hamming Code')
 window.resizable(False, False)
@@ -45,14 +54,17 @@ canvas.create_window(200, 90, window=label)
 
 validate_command = (window.register(validate_input), '%P')
 
-entry_input = Entry(window, validate='all', validatecommand=validate_command)
+input_text = StringVar()
+input_text.trace('w', button_state_controller)
+
+entry_input = Entry(window, textvariable=input_text, validate='all', validatecommand=validate_command)
 entry_input.config(font=('Bahnschrift', 14))
 canvas.create_window(200, 130, window=entry_input)
 
-button_encode = Button(text='Encode', command=get_hamming_code, font=('bahnschrift', 12, 'bold'))
+button_encode = Button(text='Encode', state='disabled', command=get_hamming_code, font=('bahnschrift', 12, 'bold'))
 canvas.create_window(160, 170, window=button_encode)
 
-button_decode = Button(text='Decode', command=get_hamming_decode, font=('bahnschrift', 12, 'bold'))
+button_decode = Button(text='Decode', state='disabled', command=get_hamming_decode, font=('bahnschrift', 12, 'bold'))
 canvas.create_window(240, 170, window=button_decode)
 
 label_text = StringVar()
