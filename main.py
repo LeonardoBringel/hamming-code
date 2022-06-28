@@ -1,6 +1,26 @@
 from hamming import *
 from tkinter import *
 
+
+def get_hamming_code():
+    label_text.set('Generated data: ')
+    get_answer(True)
+
+
+def get_hamming_decode():
+    label_text.set('Decoded data: ')
+    get_answer(False)
+
+
+def get_answer(encode=True):
+    bits = entry_input.get()
+    bits = [int(bit) for bit in bits]
+
+    result = hamming_code(bits) if encode else hamming_decode(bits)
+    result = ''.join(str(bit) for bit in result)
+    output_text.set(result)
+
+
 window = Tk()
 window.title('Hamming Code')
 window.resizable(False, False)
