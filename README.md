@@ -77,3 +77,8 @@ After correcting the bit, we can recalculate to ensure that the data is no longe
 
 * [Python](https://www.python.org/): Programming language
 * [Tkinter](https://docs.python.org/3/library/tkinter.html): Python's standard GUI package
+
+
+## :page_facing_up: License
+
+This project is MIT licensed, as found in the [LICENSE](./LICENSE) file.
