@@ -21,6 +21,13 @@ def get_answer(encode=True):
     output_text.set(result)
 
 
+def validate_input(value):
+    if len(value) != 0:
+        value = value[-1]
+
+    return True if value == '1' or value == '0' or value == '' else False
+
+
 window = Tk()
 window.title('Hamming Code')
 window.resizable(False, False)
@@ -36,7 +43,9 @@ label = Label(window, text='Enter the data bits: ')
 label.config(font=('Bahnschrift', 14))
 canvas.create_window(200, 90, window=label)
 
-entry_input = Entry(window)
+validate_command = (window.register(validate_input), '%P')
+
+entry_input = Entry(window, validate='all', validatecommand=validate_command)
 entry_input.config(font=('Bahnschrift', 14))
 canvas.create_window(200, 130, window=entry_input)
 
