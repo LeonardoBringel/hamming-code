@@ -1,35 +1,61 @@
 from hamming import *
+from tkinter import *
 
-print('  _   _                                            ____          _      ')
-print(' | | | | __ _ _ __ ___  _ __ ___ (_)_ __   __ _   / ___|___   __| | ___ ')
-print(' | |_| |/ _` | \'_ ` _ \\| \'_ ` _ \\| | \'_ \\ / _` | | |   / _ \\ / _` |/ _ \\')
-print(' |  _  | (_| | | | | | | | | | | | | | | | (_| | | |__| (_) | (_| |  __/')
-print(' |_| |_|\\__,_|_| |_| |_|_| |_| |_|_|_| |_|\\__, |  \\____\\___/ \\__,_|\\___|')
-print('                                          |___/                         ')
 
-while True:
-    answer = input('[1] - Code\t\t[2] - Decode\n[0] - Exit\t\tOption: ')
-    match answer:
-        case '1':
-            print('\n-- Hamming Code --')
+def get_hamming_code():
+    label_text.set('Generated data: ')
+    get_answer(True)
 
-            bits = input('Enter the data bits: ')
-            bits = [int(bit) for bit in bits]
 
-            result = hamming_code(bits)
-            result = ''.join(str(bit) for bit in result)
-            print(f'Generated Hamming Code: {result}')
+def get_hamming_decode():
+    label_text.set('Decoded data: ')
+    get_answer(False)
 
-        case '2':
-            print('\n-- Hamming Decode --')
 
-            bits = input('Enter the data bits: ')
-            bits = [int(bit) for bit in bits]
+def get_answer(encode=True):
+    bits = entry_input.get()
+    bits = [int(bit) for bit in bits]
 
-            result = hamming_decode(bits)
-            result = ''.join(str(bit) for bit in result)
-            print(f'Decoded Data: {result}')
+    result = hamming_code(bits) if encode else hamming_decode(bits)
+    result = ''.join(str(bit) for bit in result)
+    output_text.set(result)
 
-        case '0':
-            exit()
-    print('\n')
+
+window = Tk()
+window.title('Hamming Code')
+window.resizable(False, False)
+window.eval('tk::PlaceWindow . center')
+
+canvas = Canvas(window, width=400, height=300, relief='raised')
+canvas.pack()
+
+label = Label(window, text='Hamming Code', font=('Bahnschrift', 16, 'bold', 'underline'))
+canvas.create_window(200, 25, window=label)
+
+label = Label(window, text='Enter the data bits: ')
+label.config(font=('Bahnschrift', 14))
+canvas.create_window(200, 90, window=label)
+
+entry_input = Entry(window)
+entry_input.config(font=('Bahnschrift', 14))
+canvas.create_window(200, 130, window=entry_input)
+
+button_encode = Button(text='Encode', command=get_hamming_code, font=('bahnschrift', 12, 'bold'))
+canvas.create_window(160, 170, window=button_encode)
+
+button_decode = Button(text='Decode', command=get_hamming_decode, font=('bahnschrift', 12, 'bold'))
+canvas.create_window(240, 170, window=button_decode)
+
+label_text = StringVar()
+label_text.set('')
+output_text = StringVar()
+
+label2 = Label(window, textvariable=label_text)
+label2.config(font=('Bahnschrift', 14))
+canvas.create_window(200, 210, window=label2)
+
+entry_output = Entry(window)
+entry_output.config(textvariable=output_text, state='readonly', font=('Bahnschrift', 14))
+canvas.create_window(200, 250, window=entry_output)
+
+window.mainloop()
