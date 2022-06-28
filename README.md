@@ -71,3 +71,9 @@ After correcting the bit, we can recalculate to ensure that the data is no longe
 * Calculate Hamming Code
 * Single-bit error correction
 * Decode Hamming Code
+
+
+## :rocket: Technologies Used
+
+* [Python](https://www.python.org/): Programming language
+* [Tkinter](https://docs.python.org/3/library/tkinter.html): Python's standard GUI package
