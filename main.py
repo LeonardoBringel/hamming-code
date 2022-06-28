@@ -40,6 +40,12 @@ entry_input = Entry(window)
 entry_input.config(font=('Bahnschrift', 14))
 canvas.create_window(200, 130, window=entry_input)
 
+button_encode = Button(text='Encode', command=get_hamming_code, font=('bahnschrift', 12, 'bold'))
+canvas.create_window(160, 170, window=button_encode)
+
+button_decode = Button(text='Decode', command=get_hamming_decode, font=('bahnschrift', 12, 'bold'))
+canvas.create_window(240, 170, window=button_decode)
+
 label_text = StringVar()
 label_text.set('')
 output_text = StringVar()
