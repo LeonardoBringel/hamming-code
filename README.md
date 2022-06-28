@@ -5,7 +5,11 @@
 
 <p align="center">
     <a href="https://gitmoji.dev">
-        <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+        <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg" alt="Gitmoji">
+    </a>
+    
+    <a href="https://github.com/LeonardoBringel/HammingCode/blob/main/LICENSE">
+        <img src="https://img.shields.io/github/license/LeonardoBringel/HammingCode?color=blue" alt="License">
     </a>
 </p>
 
