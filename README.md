@@ -1,4 +1,13 @@
-# Hamming Code
+<h1 align="center">
+    Hamming Code
+</h1>
+
+
+<p align="center">
+    <a href="https://gitmoji.dev">
+        <img src="https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square" alt="Gitmoji">
+    </a>
+</p>
 
 
 ## :pushpin: About
