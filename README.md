@@ -46,6 +46,7 @@ The position of the Parity Bit determines the sequence of bits that it alternati
     parity 3 = 0 + 0 + 1 + 1 = 2 (even)
     
     hamming code: "0 1 1 0 0 1 1"
+
 Note: The parity itself assumes value 0 when being calculated.
 
 
@@ -56,7 +57,7 @@ The first thing to do is to locate the parity bits and recalculate them, compari
 
     (e.g.) received word: "0 1 1 0 1 1 1"
     
-    recalculating parity
+    recalculating parity:
     parity 1 (bit 1) = 3 (odd) = 1
     parity 2 (bit 2) = 3 (odd) = 1
     parity 3 (bit 4) = 3 (odd) = 1
@@ -89,6 +90,11 @@ After correcting the bit, we can recalculate to ensure that the data is no longe
 
 * [Python](https://www.python.org/): Programming language
 * [Tkinter](https://docs.python.org/3/library/tkinter.html): Python's standard GUI package
+
+
+## :art: Preview
+
+![hamming-code-preview](https://user-images.githubusercontent.com/64162701/176600689-8eb9c0dc-cbcf-4399-9d48-651d4401b395.jpg)
 
 
 ## :page_facing_up: License
