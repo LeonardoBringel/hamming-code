@@ -20,20 +20,22 @@ class Window(Tk):
         self.label_text = StringVar()
         self.output_text = StringVar()
 
+        title_font = ('Bahnschrift', 16, 'bold', 'underline')
+        text_font = ('Bahnschrift', 14)
+        button_font = ('bahnschrift', 12, 'bold')
+
         validate_command = (self.register(self.validate_input), '%P')
 
-        create_label(self.canvas, 'Hamming Code', ('Bahnschrift', 16, 'bold', 'underline'), 200, 25)
+        create_label(self.canvas, 'Hamming Code', title_font, 200, 25)
 
-        create_label(self.canvas, 'Enter the data bits: ', ('Bahnschrift', 14), 200, 90)
-        self.entry_input = create_entry(self.canvas, self.input_text, ('Bahnschrift', 14), 200, 130, validate_command)
+        create_label(self.canvas, 'Enter the data bits: ', text_font, 200, 90)
+        self.entry_input = create_entry(self.canvas, self.input_text, text_font, 200, 130, validate_command)
 
-        self.button_encode = create_button(self.canvas, 'Encode', self.get_hamming_code,
-                                           ('bahnschrift', 12, 'bold'), 160, 170)
-        self.button_decode = create_button(self.canvas, 'Decode', self.get_hamming_decode,
-                                           ('bahnschrift', 12, 'bold'), 240, 170)
+        self.button_encode = create_button(self.canvas, 'Encode', self.get_hamming_code, button_font, 160, 170)
+        self.button_decode = create_button(self.canvas, 'Decode', self.get_hamming_decode, button_font, 240, 170)
 
-        create_label(self.canvas, self.label_text, ('Bahnschrift', 14), 200, 210)
-        self.entry_output = create_entry(self.canvas, self.output_text, ('Bahnschrift', 14), 200, 250)
+        create_label(self.canvas, self.label_text, text_font, 200, 210)
+        self.entry_output = create_entry(self.canvas, self.output_text, text_font, 200, 250)
 
     def get_hamming_code(self):
         self.label_text.set('Generated data: ')
