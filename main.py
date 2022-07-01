@@ -1,5 +1,6 @@
 from hamming import *
 from tkinter import *
+from interface_utils import *
 
 
 def get_hamming_code():
@@ -45,38 +46,23 @@ window.eval('tk::PlaceWindow . center')
 canvas = Canvas(window, width=400, height=300, relief='raised')
 canvas.pack()
 
-label = Label(window, text='Hamming Code', font=('Bahnschrift', 16, 'bold', 'underline'))
-canvas.create_window(200, 25, window=label)
-
-label = Label(window, text='Enter the data bits: ')
-label.config(font=('Bahnschrift', 14))
-canvas.create_window(200, 90, window=label)
+create_label(canvas, 'Hamming Code', ('Bahnschrift', 16, 'bold', 'underline'), 200, 25)
+create_label(canvas, 'Enter the data bits: ', ('Bahnschrift', 14), 200, 90)
 
 validate_command = (window.register(validate_input), '%P')
 
 input_text = StringVar()
 input_text.trace('w', button_state_controller)
 
-entry_input = Entry(window, textvariable=input_text, validate='all', validatecommand=validate_command)
-entry_input.config(font=('Bahnschrift', 14))
-canvas.create_window(200, 130, window=entry_input)
+entry_input = create_entry(canvas, input_text, ('Bahnschrift', 14), 200, 130, validate_command)
 
-button_encode = Button(text='Encode', state='disabled', command=get_hamming_code, font=('bahnschrift', 12, 'bold'))
-canvas.create_window(160, 170, window=button_encode)
-
-button_decode = Button(text='Decode', state='disabled', command=get_hamming_decode, font=('bahnschrift', 12, 'bold'))
-canvas.create_window(240, 170, window=button_decode)
+button_encode = create_button(canvas, 'Encode', get_hamming_code, ('bahnschrift', 12, 'bold'), 160, 170)
+button_decode = create_button(canvas, 'Decode', get_hamming_decode, ('bahnschrift', 12, 'bold'), 240, 170)
 
 label_text = StringVar()
-label_text.set('')
 output_text = StringVar()
 
-label2 = Label(window, textvariable=label_text)
-label2.config(font=('Bahnschrift', 14))
-canvas.create_window(200, 210, window=label2)
-
-entry_output = Entry(window)
-entry_output.config(textvariable=output_text, state='readonly', font=('Bahnschrift', 14))
-canvas.create_window(200, 250, window=entry_output)
+create_label(canvas, label_text, ('Bahnschrift', 14), 200, 210)
+entry_output = create_entry(canvas, output_text, ('Bahnschrift', 14), 200, 250)
 
 window.mainloop()
